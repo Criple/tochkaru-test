@@ -19,5 +19,8 @@ Route::get('/', function () {
 
 
 Route::group(['prefix' => 'admin'], function () {
+    Route::prefix('posts')->group(function (){
+        Route::get('{table}/edit', [\App\Http\Controllers\PostsController::class, 'edit'])->name('admin.posts.edit-form');
+    });
     Voyager::routes();
 });
